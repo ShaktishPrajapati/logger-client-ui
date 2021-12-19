@@ -7,6 +7,7 @@ import "../../../css/filterModal.css"
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectByCode } from "../../../redux/action/ProjectAction";
 import toast from "react-hot-toast";
+import { data } from "jquery";
 
 
 export default function FilterButton() {
@@ -111,12 +112,18 @@ export default function FilterButton() {
             logType.debug ||
             logType.verbose
         ) {
-            dispatch(getProjectByCode(code, date, logType, pageNo, record));
+            return dispatch(getProjectByCode(code, date, logType, pageNo, record));
         }
         if (!date.start && !date.end) {
             setEmptyDate(true);
         }
-        dispatch(getProjectByCode(code, date, logType, pageNo, record));
+        if (date.start || data.end) {
+            return dispatch(getProjectByCode(code, date, logType));
+        }
+        if (record && (!date.start || !data.end)) {
+            return dispatch(getProjectByCode(code, null, null, null, record));
+        }
+        dispatch(getProjectByCode(code, date, logType));
     }
 
 
@@ -141,6 +148,7 @@ export default function FilterButton() {
         if (record == 100) {
             localStorage.setItem("selected_records", JSON.stringify(record));
         }
+
         console.log("localstorage itmes", parseInt(localStorage.getItem("selected_records")));
 
 
