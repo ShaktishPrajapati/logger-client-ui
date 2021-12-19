@@ -1,0 +1,11 @@
+
+
+.Active-opt {
+  background-color: rgb(62, 139, 226) !important;
+  color: #fff !important;
+  transition-duration: 0.3s !important;
+}
+
+.Inactive-opt {
+  background-color: none !important;
+}

@@ -1,0 +1,55 @@
+import React from "react";
+import { useSelector } from "react-redux";
+import {
+    BarChart,
+    Bar,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend
+} from "recharts";
+
+
+export function VerticalBarChart() {
+    const getErrorWRTVersionReducer = useSelector(state => state.getErrorWRTVersionReducer)
+
+
+    // useEffect(() => {
+
+    //     (async () => {
+    //         const { data } = getErrorWRTVersionReducer;
+    //         const piCount = await data && data.typeWiseCount[0].count ? data.typeWiseCount[0].count : null;
+    //         setChartDatApi(piCount)
+    //         // console.log("chartDatApi data", data)
+    //         // console.log("getErrorWRTVersionReducer", chartDatApi)
+    //     })()
+    // }, [])
+
+
+
+    const { data } = getErrorWRTVersionReducer;
+    const piCount = data && data.typeWiseCount ? data.typeWiseCount : null;
+    console.log("LineCount line graph", piCount)
+
+    return (
+        <BarChart
+            width={450}
+            height={400}
+            data={piCount}
+            margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5
+            }}
+        >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="_id" />
+            <YAxis dataKey="count" />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="count" fill="#3E8BE2" />
+        </BarChart>
+    );
+}
