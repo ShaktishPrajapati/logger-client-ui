@@ -105,8 +105,8 @@ function Analytics() {
           </Row>
 
           <Row className="mt-5 d-flex justify-content-center align-items-center">
-            <Col xl={6}>   {/*<PieChartNew options={{ width: "200" }} /> */}  <VerticalBarChart /> </Col>
-            <Col xl={6} >{/* <OsArchitectureDonutNewVerticalChart /> <OsArchitectureDonutNew />*/} <LineGraphOsError />  </Col>
+            <Col xl={6} style={{ marginLeft: "-30px" }}>  {/*<PieChartNew options={{ width: "200" }} /> */}  <VerticalBarChart /> </Col>
+            <Col xl={6} style={{ marginLeft: "-30px" }}>{/* <OsArchitectureDonutNewVerticalChart /> <OsArchitectureDonutNew />*/} <LineGraphOsError />  </Col>
           </Row>
 
 

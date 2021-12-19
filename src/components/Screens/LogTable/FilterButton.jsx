@@ -50,7 +50,8 @@ export default function FilterButton() {
             : false,
     });
 
-    const [record, setRecords] = useState(25);
+
+    const [record, setRecords] = useState(parseInt(localStorage.getItem("selected_records")) ? parseInt(localStorage.getItem("selected_records")) : 25);
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const code = urlParams.get("code");
@@ -115,9 +116,7 @@ export default function FilterButton() {
         if (!date.start && !date.end) {
             setEmptyDate(true);
         }
-        setPageNo(0);
-        dispatch(getProjectByCode(code, date, null, pageNo, record));
-
+        dispatch(getProjectByCode(code, date, logType, pageNo, record));
     }
 
 
@@ -130,6 +129,21 @@ export default function FilterButton() {
         if (date.start.length > 0 || date.end.length > 0) {
             localStorage.setItem("selected_date", JSON.stringify(date));
         }
+        if (record == 10) {
+            localStorage.setItem("selected_records", JSON.stringify(record));
+        }
+        if (record == 25) {
+            localStorage.setItem("selected_records", JSON.stringify(record));
+        }
+        if (record == 50) {
+            localStorage.setItem("selected_records", JSON.stringify(record));
+        }
+        if (record == 100) {
+            localStorage.setItem("selected_records", JSON.stringify(record));
+        }
+        console.log("localstorage itmes", parseInt(localStorage.getItem("selected_records")));
+
+
         toast.success("Filter saved"
             // {
             // icon: '👏',
@@ -140,7 +154,7 @@ export default function FilterButton() {
             // }}
 
         )
-        dispatch(getProjectByCode(code, date, null, pageNo, record));
+        dispatch(getProjectByCode(code, date, logType, pageNo, record));
     };
 
     const resetAllfilters = () => {
@@ -158,6 +172,7 @@ export default function FilterButton() {
         setPageNo(0);
         localStorage.removeItem("selected_log");
         localStorage.removeItem("selected_date");
+        localStorage.removeItem("selected_records");
         dispatch(getProjectByCode(code, date, null, pageNo, record));
         toast.success("all Filter Reset done")
     }

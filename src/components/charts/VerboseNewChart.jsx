@@ -9,38 +9,51 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export default function VerboseNewChart() {
-  // let [chartDatApi, setChartDatApi] = useState([]);
-  // let [logtypelabel, setLogtypelabel] = useState([]);
   const [chartData, setChartData] = useState([])
   const [chartDataLabel, setChartDataLabel] = useState([])
 
 
+
   const getLogCountsReducer = useSelector((state) => state.getLogCountsReducer);
-  const getDataToChart = async () => {
-    const { data } = await getLogCountsReducer;
-    const piCount =
-      data && data.data && data.data.typeWiseCount
-        ? data.data.typeWiseCount
-        : null;
 
-    console.log("pieCount vs", piCount);
-    setChartData(piCount.map(itmes => itmes.count))
-    setChartDataLabel(piCount.map(itmes => itmes.logType))
 
-    // console.log("piCount verbose", piCount.map(items => items.count));
-    // const chartDataCount = await piCount.map(items => items.count);
-    // setChartDatApi(chartDataCount);
-    // console.log("verboser chart", piCount)
-    // console.log("piCountData verbose", piCountData)
-    // console.log("piCount verbose chart", piCount.map(logtype => logtype.logType))
-    // const logtypelabel = piCount.map(logtype => logtype.logType)
-    // setLogtypelabel(piCount.map(logtype => logtype.logType))
+
+  // console.log("piCount verbose", piCount.map(items => items.count));
+  // const chartDataCount = await piCount.map(items => items.count);
+  // setChartDatApi(chartDataCount);
+  // console.log("verboser chart", piCount)
+  // console.log("piCountData verbose", piCountData)
+  // console.log("piCount verbose chart", piCount.map(logtype => logtype.logType))
+  // const logtypelabel = piCount.map(logtype => logtype.logType)
+  // setLogtypelabel(piCount.map(logtype => logtype.logType))
+
+
+
+  const fetchDate = async () => {
+
+    try {
+      const { data } = getLogCountsReducer;
+      const piCount =
+        data && data.data && data.data.typeWiseCount
+          ? data.data.typeWiseCount
+          : null;
+
+      console.log("pieCount vs", piCount);
+      setChartData(piCount.map(itmes => itmes.count))
+      setChartDataLabel(piCount.map(itmes => itmes.logType))
+
+
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
 
   useEffect(() => {
-    getDataToChart()
+    fetchDate()
   }, [])
+
+
 
 
 

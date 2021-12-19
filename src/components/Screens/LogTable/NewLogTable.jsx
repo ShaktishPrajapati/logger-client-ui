@@ -450,7 +450,7 @@ const NewLogTable = () => {
                 breakLabel="..."
                 nextLabel="Next >"
                 onPageChange={handlePageClick}
-                pageRangeDisplayed={5}
+                pageRangeDisplayed={3}
                 pageCount={data && data.data && data.data.count / record}
                 // previousLabel="< Previous"
                 renderOnZeroPageCount={null}
