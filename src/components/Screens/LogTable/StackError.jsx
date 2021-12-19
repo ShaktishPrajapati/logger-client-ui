@@ -14,17 +14,17 @@ export default function StackError() {
 
     const search = useLocation().search;
     // console.log("search param", search.);
-    // const pattern = /([A-Z])\w+/;
+    const pattern = /(at).*/gm;
     const completeStack = new URLSearchParams(search).get('allStacks');
 
 
     // let completeStackMultple = completeStack.split(":")
-    let completeStackMultplenew = completeStack.split("at")
+    let completeStackMultplenew = completeStack.match(pattern)
 
 
     // const arraytoOBj = Object.assign({}, completeStackMultple);
     // console.log("arraytoOBj", [arraytoOBj]);
-    console.log("completeStackMultplenew", completeStackMultplenew);
+    console.log("completeStackMultplenew", completeStack);
 
     let history = useHistory();
     const [fullStack, setFullStack] = useState(true)
@@ -153,13 +153,14 @@ export default function StackError() {
 
 
                             {stackInText ? <Row className="mt-4 d-flex  align-items-center">
-                                {
+                                {completeStackMultplenew == null ? <Col xl={12} ><p className="bg-primary" style={{ color: "#fff", boxShadow: "2px 2px 10px grey", borderRadius: "20px", padding: "10px" }}>{completeStack}</p></Col> :
                                     completeStackMultplenew.map((itmes) => {
                                         return (
                                             <Col xl={12} ><p className="bg-primary" style={{ color: "#fff", boxShadow: "2px 2px 10px grey", borderRadius: "20px", padding: "10px" }}>{itmes}</p></Col>
                                         )
                                     })
                                 }
+
                             </Row> : null}
                         </Col>
                     </Row>
