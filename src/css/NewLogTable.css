@@ -146,3 +146,6 @@ th {
 .pagesOption label input {
   margin: 4px !important;
 }
+.dropdown-item a{
+  text-decoration: none !important;
+}

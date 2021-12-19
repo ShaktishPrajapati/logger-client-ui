@@ -353,13 +353,22 @@ const NewLogTable = () => {
   // }
 
 
-
-
   // const options = {
   //   // pageStartIndex: 0,
-  //   sizePerPage: 25,
-  //   hideSizePerPage: true,
-  //   hidePageListOnlyOnePage: true
+  //   sizePerPage: 10,
+  //   paginationSize: 4,
+  //   sizePerPageList: [{
+  //     text: '10', value: 10
+  //   }, {
+  //     text: '25', value: 25
+  //   },
+  //   {
+  //     text: '50', value: 50
+  //   },
+  //   {
+  //     text: '100', value: 100
+  //   },]
+
   // };
 
 
@@ -426,10 +435,12 @@ const NewLogTable = () => {
 
                       <BootstrapTable
                         selectRow={selectRow}
+                        columns={columns}
                         filter={filterFactory()}
+                       
                         {...props.baseProps}
                         noDataIndication="No data found"
-                      // pagination={paginationFactory(options)}
+                        // pagination={paginationFactory(options)}
                       // pagination={paginationFactory({
                       //   // custom: true,
                       //   sizePerPage:25,
