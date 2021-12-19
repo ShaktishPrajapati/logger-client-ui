@@ -353,23 +353,23 @@ const NewLogTable = () => {
   // }
 
 
-  // const options = {
-  //   // pageStartIndex: 0,
-  //   sizePerPage: 10,
-  //   paginationSize: 4,
-  //   sizePerPageList: [{
-  //     text: '10', value: 10
-  //   }, {
-  //     text: '25', value: 25
-  //   },
-  //   {
-  //     text: '50', value: 50
-  //   },
-  //   {
-  //     text: '100', value: 100
-  //   },]
+  const options = {
+    // pageStartIndex: 0,
+    sizePerPage: 10,
+    paginationSize: 4,
+    sizePerPageList: [{
+      text: '10', value: 10
+    }, {
+      text: '25', value: 25
+    },
+    {
+      text: '50', value: 50
+    },
+    {
+      text: '100', value: 100
+    },]
 
-  // };
+  };
 
 
   const selectRow = {
@@ -440,7 +440,7 @@ const NewLogTable = () => {
                        
                         {...props.baseProps}
                         noDataIndication="No data found"
-                        // pagination={paginationFactory(options)}
+                        pagination={paginationFactory(options)}
                       // pagination={paginationFactory({
                       //   // custom: true,
                       //   sizePerPage:25,
