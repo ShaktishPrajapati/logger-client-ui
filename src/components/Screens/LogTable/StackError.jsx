@@ -31,14 +31,25 @@ export default function StackError() {
     const [stackInText, setStackInText] = useState(false)
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
+
+
     const code = urlParams.get("code");
     const projectName = urlParams.get("name");
+
+
+    const macAddress = urlParams.get("macAddress");
+    const loggenrateddate = urlParams.get("loggenrateddate");
+    const modeltype = urlParams.get("modeltype");
+    const logtype = urlParams.get("logtype");
+    const version = urlParams.get("version");
+
+    console.log("queryString", macAddress, loggenrateddate, modeltype, logtype, version)
+
     const [device, setDevice] = useState({
-        backgorundProcess: true,
+        eventDetails: true,
         devices: false,
-        os: false
     })
-    const [activeClass, setActiveClass] = useState({ backgorundProcess: true, devices: false, os: false, })
+    const [activeClass, setActiveClass] = useState({ eventDetails: true, devices: false, })
 
     const FullStack = () => {
         setFullStack(true)
@@ -53,38 +64,26 @@ export default function StackError() {
 
     const deviceSelectOne = () => {
         setDevice({
-            backgorundProcess: true,
+            eventDetails: true,
             devices: false,
-            os: false
+
         })
         setActiveClass({
-            backgorundProcess: true,
+            eventDetails: true,
             devices: false,
-            os: false
+
         })
     }
     const deviceSelectTwo = () => {
         setDevice({
-            backgorundProcess: false,
+            eventDetails: false,
             devices: true,
-            os: false
+
         })
         setActiveClass({
-            backgorundProcess: false,
+            eventDetails: false,
             devices: true,
-            os: false
-        })
-    }
-    const deviceSelectThree = () => {
-        setDevice({
-            backgorundProcess: false,
-            devices: false,
-            os: true
-        })
-        setActiveClass({
-            backgorundProcess: false,
-            devices: false,
-            os: true
+
         })
     }
 
@@ -122,15 +121,25 @@ export default function StackError() {
                         <Col xl={7} style={{ boxShadow: "2px 2px 10px grey", borderRadius: "20px" }} className="m-2 p-4"><VersonGraph /></Col>
                         <Col xl={4} style={{ boxShadow: "2px 2px 10px grey", borderRadius: "20px" }} className="m-2 p-4">
                             <Row>
-                                <Col xl={4} onClick={deviceSelectOne} style={{ cursor: "pointer", padding: "5px", borderRadius: "10px", color: "#fff", display: "flex", justifyContent: "center" }} className={activeClass.backgorundProcess ? "active-stack" : "Inactive-stack"} >Backround</Col>
-                                <Col xl={4} onClick={deviceSelectTwo} style={{ cursor: "pointer", padding: "5px", borderRadius: "10px", color: "#fff", display: "flex", justifyContent: "center" }} className={activeClass.devices ? "active-stack" : "Inactive-stack"}>Devices</Col>
-                                <Col xl={4} onClick={deviceSelectThree} style={{ cursor: "pointer", padding: "5px", borderRadius: "10px", color: "#fff", display: "flex", justifyContent: "center" }} className={activeClass.os ? "active-stack" : "Inactive-stack"}>Os</Col>
+                                <Col xl={6} onClick={deviceSelectOne} style={{ cursor: "pointer", padding: "5px", borderRadius: "10px", color: "#fff", display: "flex", justifyContent: "center" }} className={activeClass.eventDetails ? "active-stack" : "Inactive-stack"} >Event Details</Col>
+                                <Col xl={6} onClick={deviceSelectTwo} style={{ cursor: "pointer", padding: "5px", borderRadius: "10px", color: "#fff", display: "flex", justifyContent: "center" }} className={activeClass.devices ? "active-stack" : "Inactive-stack"}>Event Occurrence</Col>
                             </Row>
                             <Row>
-                                <Col xl={12} className="d-flex justify-content-center align-items-center" style={{ heigh: "100%" }}>
-                                    {device.backgorundProcess ? <DeviceOne /> : null}
+                                <Col xl={12} className="p-3" style={{ heigh: "100%" }}>
+                                    {device.eventDetails ?
+                                        <>
+                                            <p>macAddress : <span style={{ color: "rgb(62, 139, 226)" }}>{macAddress}</span></p>
+                                            <p>loggenrateddate : <span style={{ color: "rgb(62, 139, 226)" }}>{loggenrateddate}</span></p>
+                                            <p>modeltype : <span style={{ color: "rgb(62, 139, 226)" }}>{modeltype}</span></p>
+                                            <p>logtype : <span style={{ color: "rgb(62, 139, 226)" }}>{logtype}</span></p>
+                                            <p>version : <span style={{ color: "rgb(62, 139, 226)" }}>{version}</span></p>
+                                        </>
+                                        : null}
                                     {device.devices ? <DeviceOne /> : null}
-                                    {device.os ? <DeviceOne /> : null}
+                                    {device.os ?
+                                        <>
+                                            <p>macAddress : <span style={{ color: "rgb(62, 139, 226)" }}>stack duplicacy</span></p>
+                                        </> : null}
                                 </Col>
                             </Row>
 
