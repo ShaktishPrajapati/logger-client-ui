@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import VersonGraph from './StackTracecharts/Verson';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faToggleOn, faEnvelopeOpenText, faArrowLeft, faCode, faChartPie, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faToggleOn, faEnvelopeOpenText, faArrowLeft, faCode, faChartPie, faHome, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from 'react';
 import "../../../css/StackError.css"
 import DeviceOne from './StackTracecharts/DeviceOne';
@@ -43,6 +43,8 @@ export default function StackError() {
     const logtype = urlParams.get("logtype");
     const version = urlParams.get("version");
 
+    console.log("logtype", logtype)
+
     console.log("queryString", macAddress, loggenrateddate, modeltype, logtype, version)
 
     const [device, setDevice] = useState({
@@ -50,6 +52,10 @@ export default function StackError() {
         devices: false,
     })
     const [activeClass, setActiveClass] = useState({ eventDetails: true, devices: false, })
+
+
+    const [displayLowerInfo, setDisplayLowerInfo] = useState(false)
+    const [displayLowerInfoStackError, setDisplayLowerInfoStackError] = useState(true)
 
     const FullStack = () => {
         setFullStack(true)
@@ -109,6 +115,27 @@ export default function StackError() {
         },
     };
 
+    const ShowInnerInfo = () => {
+        if (displayLowerInfo) {
+            return setDisplayLowerInfo(false)
+        }
+        if (!displayLowerInfo) {
+            return setDisplayLowerInfo(true)
+        }
+        return setDisplayLowerInfo(false)
+    }
+
+    const ShowInnerInfoStackError = () => {
+        if (displayLowerInfoStackError) {
+            return setDisplayLowerInfoStackError(false)
+        }
+        if (!displayLowerInfoStackError) {
+            return setDisplayLowerInfoStackError(true)
+        }
+        return setDisplayLowerInfoStackError(false)
+    }
+
+
 
     return (
         <>
@@ -131,15 +158,14 @@ export default function StackError() {
                                             <p>macAddress : <span style={{ color: "rgb(62, 139, 226)" }}>{macAddress}</span></p>
                                             <p>loggenrateddate : <span style={{ color: "rgb(62, 139, 226)" }}>{loggenrateddate}</span></p>
                                             <p>modeltype : <span style={{ color: "rgb(62, 139, 226)" }}>{modeltype}</span></p>
-                                            <p>logtype : <span style={{ color: "rgb(62, 139, 226)" }}>{logtype}</span></p>
+                                            <p>logtype :
+                                                {logtype == "info" ? <span style={{ color: "rgb(62, 139, 226)" }}>{logtype}</span> : null}
+                                            </p>
                                             <p>version : <span style={{ color: "rgb(62, 139, 226)" }}>{version}</span></p>
                                         </>
                                         : null}
-                                    {device.devices ? <DeviceOne /> : null}
-                                    {device.os ?
-                                        <>
-                                            <p>macAddress : <span style={{ color: "rgb(62, 139, 226)" }}>stack duplicacy</span></p>
-                                        </> : null}
+                                    {device.devices ? <p>macAddress : <span style={{ color: "rgb(62, 139, 226)" }}>stack duplicacy</span></p> : null}
+
                                 </Col>
                             </Row>
 
@@ -152,20 +178,60 @@ export default function StackError() {
                             <Row>
                                 <Col>
                                     <Button onClick={FullStack} ><FontAwesomeIcon icon={faToggleOn} /></Button>
-                                    <Button onClick={StackInText} className="ml-2" ><FontAwesomeIcon icon={faEnvelopeOpenText} /></Button>
+                                    <Button onClick={StackInText} className="ml-2" >Txt</Button>
                                 </Col>
                             </Row>
-                            {fullStack ? <Row className="mt-4 d-flex">
-                                <p className="bg-primary" style={{ boxShadow: "2px 2px 10px grey", borderRadius: "20px", padding: "10px", color: "#fff" }} > {completeStack}</p>
-                            </Row> : null}
+                            {fullStack ?
+                                <Row className="mt-4 d-flex">
+                                    <div style={{ border: "1px solid #ABABAB", borderRadius: "10px", padding: "0px", color: "#707070", fontSize: ".9rem", margin: "0px", }}>
+                                        <div style={{ display: "flex" }}>
+                                            <p style={{ backgroundColor: "#EEEEEE", border: "1px solid #ABABAB", borderRadius: "10px", padding: "5px", color: "#707070", fontSize: "1rem", margin: "0px", width: "100%", fontWeight: "bold" }} onClick={ShowInnerInfoStackError}>Stack Errors
+                                                <span style={{ float: "right", }}><FontAwesomeIcon icon={faArrowDown} /></span>
+                                            </p>
+                                        </div>
+
+                                        {displayLowerInfoStackError ? <p style={{ backgroundColor: "#fff", borderRadius: "10px", padding: "10px", color: "#707070", fontSize: ".9rem", margin: "0px", width: "100%" }} > {completeStack}</p> : null}
 
 
+                                    </div>
+                                </Row> : null}
 
                             {stackInText ? <Row className="mt-4 d-flex  align-items-center">
-                                {completeStackMultplenew == null ? <Col xl={12} ><p className="bg-primary" style={{ color: "#fff", boxShadow: "2px 2px 10px grey", borderRadius: "20px", padding: "10px" }}>{completeStack}</p></Col> :
+                                {completeStackMultplenew == null ? <Col xl={12} >
+                                    <div>
+                                        <div style={{ border: "1px solid #ABABAB", borderRadius: "10px", }}>
+                                            <p style={{ backgroundColor: "#EEEEEE", border: "1px solid #ABABAB", borderRadius: "10px", padding: "5px", color: "#707070", fontSize: ".9rem", margin: "0px" }} onClick={ShowInnerInfo}>{completeStack}
+                                                <span style={{ float: "right", }}><FontAwesomeIcon icon={faArrowDown} /></span>
+                                            </p>
+                                            {displayLowerInfo ? <p style={{
+                                                color: "#707070", fontSize: ".9rem", padding: "5px"
+                                            }}>
+                                                {completeStack}
+                                            </p> : null}
+                                        </div>
+
+                                    </div>
+
+
+                                </Col> :
                                     completeStackMultplenew.map((itmes) => {
                                         return (
-                                            <Col xl={12} ><p className="bg-primary" style={{ color: "#fff", boxShadow: "2px 2px 10px grey", borderRadius: "20px", padding: "10px" }}>{itmes}</p></Col>
+                                            <Col xl={12} className="mt-2" >
+                                                <div>
+                                                    <div style={{ border: "1px solid #ABABAB", borderRadius: "10px", }}>
+                                                        <p style={{ backgroundColor: "#EEEEEE", border: "1px solid #ABABAB", borderRadius: "10px", padding: "5px", color: "#707070", fontSize: ".9rem", margin: "0px" }} onClick={ShowInnerInfo}>{itmes}
+                                                            <span style={{ float: "right", }}><FontAwesomeIcon icon={faArrowDown} /></span>
+                                                        </p>
+                                                        {displayLowerInfo ? <p style={{
+                                                            color: "#707070", fontSize: ".9rem", padding: "5px"
+                                                        }}>
+                                                            {itmes}
+                                                        </p> : null}
+                                                    </div>
+
+                                                </div>
+                                            </Col>
+
                                         )
                                     })
                                 }
