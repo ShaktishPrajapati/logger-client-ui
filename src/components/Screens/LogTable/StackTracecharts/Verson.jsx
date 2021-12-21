@@ -23,7 +23,7 @@ export default function VersonGraph() {
         <div>
             <LineChart
                 width={500}
-                height={200}
+                height={250}
                 data={data}
                 margin={{
                     top: 10,

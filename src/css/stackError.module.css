@@ -1,0 +1,93 @@
+.versonGraph {
+    box-shadow: 2px 2px 10px grey;
+    border-radius: 20px;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.eventOuter {
+    box-shadow: 2px 2px 10px grey;
+    border-radius: 20px;
+    width: 40% !important;
+}
+
+.span {
+    color: rgb(62, 139, 226)
+}
+
+.dataSection {
+    box-shadow: 2px 2px 10px grey;
+    border-radius: 20px
+}
+
+.dataSection .innerdiv {
+    border-radius: 8px;
+    padding: 0px !important;
+    color: #707070;
+    margin: 0px !important;
+    border: 1px solid rgb(171, 171, 171, 0.3)
+}
+
+.dataSection .innerdiv p {
+    background-color: #EEEEEE;
+    /* border: 1px solid rgb(171, 171, 171, 0.3); */
+    border-radius: 8px;
+    padding: 5px;
+    color: #707070;
+    font-size: 1rem;
+    margin: 0px;
+    width: 100%;
+}
+
+
+.DataDistribute {
+    border: 1px solid rgb(171, 171, 171, 0.3);
+    border-radius: 8px;
+}
+
+.NoStackErrorDiv p {
+    background-color: #EEEEEE;
+    border: 1px solid rgb(171, 171, 171, 0.3);
+    border-radius: 8px;
+    padding: 5px;
+    color: #707070;
+    font-size: 1rem;
+    margin: 0px;
+    width: 100%;
+}
+
+.stackErrorParagraph {
+    background-color: #fff !important;
+    border-radius: 8px;
+    padding: 10px;
+    color: #707070 !important;
+    font-size: .9rem !important;
+    margin: 0px;
+    width: 100%
+}
+
+
+.stackErrorDiv {
+    border: 1px solid rgb(171, 171, 171, 0.3);
+    border-radius: 8px;
+}
+
+.stackErrorDiv p:nth-child(1) {
+    background-color: #EEEEEE;
+    border: 1px solid rgb(171, 171, 171, 0.3);
+    border-radius: 8px;
+    padding: 5px;
+    color: #707070;
+    font-size: .9rem;
+    margin: 0px
+}
+
+
+
+.activeStack {
+    background-color: rgb(62, 139, 226) !important;
+}
+
+.InactiveStack {
+    color: rgb(0, 0, 0) !important;
+}

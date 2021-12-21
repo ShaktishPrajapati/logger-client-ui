@@ -69,8 +69,11 @@ const defaultSorted = [
 ];
 
 
+var queryAllSting = { value1: "at", value2: "" };
 
-
+const StackOptions = () => {
+  localStorage.setItem("queryAllSting", JSON.stringify(queryAllSting))
+}
 
 
 const columns = [
@@ -103,8 +106,7 @@ const columns = [
             {col}
           </ReactReadMoreReadLess>
           <Link to={`/stackError?name=stackError&id=${row._id}&allStacks=${row.logMsg}&macAddress=${row.did}&loggenrateddate=${row.logGeneratedDate}&modeltype=${row.device_types}&logtype=${row.logType}&version=${row.updatedAt}`}>
-            <Button style={{ float: "right" }} onClick={() => {
-            }}>Stack</Button>
+            <Button style={{ float: "right" }} onClick={StackOptions}>Stack</Button>
           </Link>
         </div >
       );
