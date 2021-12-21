@@ -193,12 +193,14 @@ const NewLogTable = () => {
   const code = urlParams.get("code");
   const projectName = urlParams.get("name");
   const dispatch = useDispatch();
+
+
   const getAllLogByCodeReducer = useSelector(
     (state) => state.getAllLogByCodeReducer
   );
   const { loading, data } = getAllLogByCodeReducer;
 
-  console.log("complete data", data)
+  console.log("getAllLogByCodeReducer", getAllLogByCodeReducer)
 
   const dt = localStorage.getItem("selected_date");
   console.log(JSON.parse(dt));
@@ -262,9 +264,9 @@ const NewLogTable = () => {
 
   };
 
-  // useEffect(() => {
-  //     dispatch(getProjectByCode(code))
-  // }, [])
+  useEffect(() => {
+      dispatch(getProjectByCode(code))
+  }, [])
 
   // console.log("page no" + pageNo);
 
