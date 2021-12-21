@@ -86,8 +86,11 @@
 
 .activeStack {
     background-color: rgb(62, 139, 226) !important;
+    margin-left: 10px;
 }
 
 .InactiveStack {
+    margin-left: 10px;
     color: rgb(0, 0, 0) !important;
+    border: 1px solid rgb(171, 171, 171, 0.3)
 }

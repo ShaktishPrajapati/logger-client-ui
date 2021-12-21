@@ -164,8 +164,8 @@ export default function StackError() {
                         <Col xl={7} className={`${Style.versonGraph} m-2 p-4 d-flex align-items-center`}><VersonGraph /></Col>
                         <Col xl={4} className={`${Style.eventOuter} p-4`}>
                             <Row>
-                                <Col xl={6} onClick={deviceSelectOne} style={{ cursor: "pointer", padding: "5px", borderRadius: "8px", color: "#fff", display: "flex", justifyContent: "center" }} className={activeClass.eventDetails ? `${Style.activeStack}` : `${Style.InactiveStack}`} >Event Details</Col>
-                                <Col xl={6} onClick={deviceSelectTwo} style={{ cursor: "pointer", padding: "5px", borderRadius: "8px", color: "#fff", display: "flex", justifyContent: "center" }} className={activeClass.devices ? `${Style.activeStack}` : `${Style.InactiveStack}`}>Event Occurrence</Col>
+                                <Col xl={5} onClick={deviceSelectOne} style={{ cursor: "pointer", padding: "5px", borderRadius: "8px", color: "#fff", display: "flex", justifyContent: "center" }} className={activeClass.eventDetails ? `${Style.activeStack}` : `${Style.InactiveStack}`} >Event Details</Col>
+                                <Col xl={5} onClick={deviceSelectTwo} style={{ cursor: "pointer", padding: "5px", borderRadius: "8px", color: "#fff", display: "flex", justifyContent: "center" }} className={activeClass.devices ? `${Style.activeStack}` : `${Style.InactiveStack}`}>Event Occurrence</Col>
                             </Row>
                             <Row>
                                 <Col xl={12} className="p-3" style={{ heigh: "100%" }}>
