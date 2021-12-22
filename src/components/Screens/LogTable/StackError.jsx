@@ -56,7 +56,9 @@ export default function StackError() {
   const loggenrateddate = urlParams.get("loggenrateddate");
   const modeltype = urlParams.get("modeltype");
   const logtype = urlParams.get("logtype");
-  const version = urlParams.get("version");
+  const version = urlParams.get("RowVersion");
+  
+
 
   console.log("logtype", logtype);
 
