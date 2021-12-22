@@ -62,7 +62,7 @@ export default function FilterButton() {
   const getAllLogByCodeReducer = useSelector(
     (state) => state.getAllLogByCodeReducer
   );
-  console.log("getAllLogByCodeReducer", getAllLogByCodeReducer);
+  // console.log("getAllLogByCodeReducer", getAllLogByCodeReducer);
 
   useEffect(() => {}, []);
 
@@ -123,7 +123,7 @@ export default function FilterButton() {
   };
 
   const saveSearch = () => {
-    console.log("save searches");
+    // console.log("save searches");
     // localStorage.removeItem("name of localStorage variable you want to remove");
     localStorage.setItem("selected_log", JSON.stringify(logType));
     if (date.start.length > 0 || date.end.length > 0) {
@@ -142,10 +142,10 @@ export default function FilterButton() {
       localStorage.setItem("selected_records", JSON.stringify(record));
     }
 
-    console.log(
-      "localstorage itmes",
-      parseInt(localStorage.getItem("selected_records"))
-    );
+    // console.log(
+    //   "localstorage itmes",
+    //   parseInt(localStorage.getItem("selected_records"))
+    // );
 
     toast.success(
       "Filter saved"

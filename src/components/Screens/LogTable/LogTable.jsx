@@ -27,7 +27,7 @@ const LogTable = () => {
     (state) => state.getAllLogByCodeReducer
   );
   const { loading, data } = getAllLogByCodeReducer;
-  console.log(code);
+  // console.log(code);
 
   const navbardetail = {
     name: projectName,
@@ -61,7 +61,7 @@ const LogTable = () => {
     table = document.getElementById("myTable");
     var rows = table.getElementsByTagName("tr");
     // for (i = 1; i < rows.length; i++) {
-    console.log(logPerPage);
+    // console.log(logPerPage);
     for (i = 1; i < logPerPage; i++) {
       var cells = rows[i].getElementsByTagName("td");
       var j;

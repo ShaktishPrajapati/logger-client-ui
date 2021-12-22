@@ -11,8 +11,15 @@ const ProjectCard = (props) => {
     <>
       <Col sm={4} md={6} xl={4}>
         <Card className="addProjectDiv">
-          <Card.Body /* className="addProjectButton" */>
-            <Card.Title style={{ textAlign: "center", color: "#212529" }}>
+          <Card.Body
+            style={{
+              width: "100%",
+              padding: "25px",
+            }} /* className="addProjectButton" */
+          >
+            <Card.Title
+              style={{ textAlign: "left", color: "#212529", width: "100%" }}
+            >
               {props.data.name}
             </Card.Title>
             <Card.Subtitle

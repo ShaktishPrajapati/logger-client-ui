@@ -94,7 +94,7 @@ const columns = [
     headerAlign: "center",
 
     formatter: (col, row) => {
-      console.log("row id mil", row);
+      // console.log("row id mil", row);
       const code = urlParams.get("code");
       return (
         <div style={{ width: "250px", height: "auto", overflow: "hidden" }}>
@@ -204,10 +204,10 @@ const NewLogTable = () => {
   );
   const { loading, data } = getAllLogByCodeReducer;
 
-  console.log("complete data", data);
+  // console.log("complete data", data);
 
   const dt = localStorage.getItem("selected_date");
-  console.log(JSON.parse(dt));
+  // console.log(JSON.parse(dt));
 
   const refreshButton = () => {
     // setDate({

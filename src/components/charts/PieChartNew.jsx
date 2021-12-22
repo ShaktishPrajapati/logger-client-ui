@@ -24,7 +24,6 @@ export function PieChartNew() {
             const { data } = getErrorWRTVersionReducer;
             const piCount = await data && data.typeWiseCount[0].count ? data.typeWiseCount[0].count : null;
             setChartDatApi(piCount)
-            console.log("getErrorWRTVersionReducer", chartDatApi)
         })()
 
 
