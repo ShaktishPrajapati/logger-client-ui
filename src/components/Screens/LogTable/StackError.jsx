@@ -51,12 +51,12 @@ export default function StackError() {
 
   const code = urlParams.get("code");
   const projectName = urlParams.get("name");
-  console.log("projectName", projectName);
+
   const macAddress = urlParams.get("macAddress");
   const loggenrateddate = urlParams.get("loggenrateddate");
   const modeltype = urlParams.get("modeltype");
   const logtype = urlParams.get("logtype");
-  const version = urlParams.get("RowVersion");
+  const version = urlParams.get("version");
 
   console.log("logtype", logtype);
 
@@ -133,7 +133,7 @@ export default function StackError() {
   // }
 
   const navbardetail = {
-    name: "projectName",
+    name: projectName,
     dashName: projectName,
     link1: {
       iconName: faCode,
