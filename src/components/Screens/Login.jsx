@@ -51,6 +51,9 @@ const Login = () => {
       ...loginForm,
       email,
     });
+
+    console.log("LoginFormState", loginForm)
+
     setEmailError(null);
     return true;
   };
