@@ -23,7 +23,11 @@ import {
   GET_ERROR_COUNT_BY_VERSION_REQUEST_FAIL,
   GET_DEVICE_INFO_REQUEST,
   GET_DEVICE_INFO_REQUEST_SUCCESS,
-  GET_DEVICE_INFO_REQUEST_FAIL
+  GET_DEVICE_INFO_REQUEST_FAIL,
+
+  GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST,
+  GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_SUCCESS,
+  GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_FAIL
 } from "../types/ProjectConstants";
 
 export const getAllProject = () => async (dispatch) => {
@@ -379,6 +383,48 @@ export const getProjectDetails = (code) => async (dispatch) => {
     console.log(error.response);
     dispatch({
       type: GET_DEVICE_INFO_REQUEST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+
+export const getLogMsgOccurenceWRTDate = ({code,startDate,endDate,logMsg}) => async (dispatch) => {
+  try {
+    console.log(logMsg)
+    console.log(code)
+    console.log(startDate)
+    console.log(endDate)
+    dispatch({ type: GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST });
+    const token = localStorage.getItem("ddAdminToken");
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    console.log("hello from action from get project details");
+
+    const { data } = await axios.get(
+      // `https://logger-server.herokuapp.com/api/logger/projects/log-occurrences-datewise/${code}?startDate=${startDate}&endDate=${endDate}&logMsg=${logMsg}`
+      `https://logger-server.herokuapp.com/api/logger/projects/log-occurrences-datewise/${code}?startDate=${startDate}&endDate=${endDate}&logMsg=${logMsg}`
+      // MF7OW?startDate=2021-08-01&endDate=2021-12-31&logMsg=Debugging!&did=10:EC:81:1C:12:30
+      ,
+      config
+    );
+    console.log(data);
+    dispatch({
+      type: GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    console.log(error.response);
+    dispatch({
+      type: GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

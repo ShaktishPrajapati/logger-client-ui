@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 import Navbarr from "../../ui/Navbarr";
 // import ProjectSideBar from './ProjectSideBar'
 import "../../../css/NewLogTable.css";
@@ -35,9 +35,10 @@ import StackError from "./StackError";
 // import NewTable from './NewTable';
 
 const { SearchBar } = Search;
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
 
 function errorFormatter(cell, row) {
-
   if (row.logType) {
     return (
       <span>
@@ -68,18 +69,12 @@ const defaultSorted = [
   },
 ];
 
-
-
-
-
-
 const columns = [
   {
     headerStyle: () => {
       return {
         width: "10%",
       };
-
     },
     dataField: "did",
     text: "Mac address",
@@ -92,7 +87,8 @@ const columns = [
     headerAlign: "center",
 
     formatter: (col, row) => {
-      console.log("col id mil", row);
+      // console.log("col id mil", row);
+      const code = urlParams.get("code");
       return (
         <div style={{ width: "250px", height: "auto", overflow: "hidden" }}>
           <ReactReadMoreReadLess
@@ -102,11 +98,14 @@ const columns = [
           >
             {col}
           </ReactReadMoreReadLess>
-          <Link to={`/stackError?name=stackError&id=${row._id}&allStacks=${row.logMsg}&macAddress=${row.did}&loggenrateddate=${row.logGeneratedDate}&modeltype=${row.device_types}&logtype=${row.logType}&version=${row.updatedAt}`}>
-            <Button style={{ float: "right" }} onClick={() => {
-            }}>Stack</Button>
+          <Link
+            to={`/stackError?code=${code}&name=stackError&id=${row._id}&allStacks=${row.logMsg}&macAddress=${row.did}&loggenrateddate=${row.logGeneratedDate}&modeltype=${row.device_types}&logtype=${row.logType}&version=${row.updatedAt}`}
+          >
+            <Button style={{ float: "right" }} onClick={() => {}}>
+              Stack
+            </Button>
           </Link>
-        </div >
+        </div>
       );
     },
 
@@ -180,14 +179,14 @@ const NewLogTable = () => {
   // const [debug, setDebug] = useState("false");
   const [pageNo, setPageNo] = useState(0);
   const [record, setRecords] = useState(25);
-  const [showStackView, setShowStackView] = useState(false)
+  const [showStackView, setShowStackView] = useState(false);
   // const [emptyDate, setEmptyDate] = useState(false);
 
   // const startDateRef = useRef(null);
   // const endDatRef = useRef(null);
 
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
+  // const queryString = window.location.search;
+  // const urlParams = new URLSearchParams(queryString);
   const code = urlParams.get("code");
   const projectName = urlParams.get("name");
   const dispatch = useDispatch();
@@ -196,7 +195,7 @@ const NewLogTable = () => {
   );
   const { loading, data } = getAllLogByCodeReducer;
 
-  console.log("complete data", data)
+  console.log("complete data", data);
 
   const dt = localStorage.getItem("selected_date");
   console.log(JSON.parse(dt));
@@ -235,7 +234,7 @@ const NewLogTable = () => {
   //   setDate({
   //     start: "",
   //     end: "",
-  //   
+  //
   //   setPageNo(0);
   //   setLogType({
   //     error: false,
@@ -256,13 +255,11 @@ const NewLogTable = () => {
     }
 
     dispatch(getProjectByCode(code, null, null, pageNo, record));
-
-
   };
 
-  // useEffect(() => {
-  //     dispatch(getProjectByCode(code))
-  // }, [])
+  useEffect(() => {
+      dispatch(getProjectByCode(code))
+  }, [])
 
   // console.log("page no" + pageNo);
 
@@ -353,7 +350,6 @@ const NewLogTable = () => {
   //   }
   // }
 
-
   // const options = {
   //   // pageStartIndex: 0,
   //   sizePerPage: 10,
@@ -372,7 +368,6 @@ const NewLogTable = () => {
 
   // };
 
-
   const selectRow = {
     mode: "checkbox",
     clickToSelect: true,
@@ -386,7 +381,6 @@ const NewLogTable = () => {
       <Container>
         <Toaster />
         <div style={{ marginTop: "8%", width: "84%", float: "right" }}>
-
           {loading ? (
             <SpinLoader />
           ) : (
@@ -403,7 +397,7 @@ const NewLogTable = () => {
                   search
                 >
                   {(props) => (
-                    <div className="logtableStyle mt-5" >
+                    <div className="logtableStyle mt-5">
                       <Row>
                         <Col>
                           <SearchBar
@@ -420,9 +414,7 @@ const NewLogTable = () => {
                           <FilterButton />
                         </Col>
 
-                        <Col>
-
-                        </Col>
+                        <Col></Col>
 
                         <Col>
                           <IoIcons.IoIosRefreshCircle
@@ -438,18 +430,16 @@ const NewLogTable = () => {
                         selectRow={selectRow}
                         columns={columns}
                         filter={filterFactory()}
-
                         {...props.baseProps}
                         noDataIndication="No data found"
-                      // pagination={paginationFactory(options)}
-                      // pagination={paginationFactory({
-                      //   // custom: true,
-                      //   sizePerPage:25,
-                      //   totalSize: data.data.logs.length
-                      // })
-                      // }
+                        // pagination={paginationFactory(options)}
+                        // pagination={paginationFactory({
+                        //   // custom: true,
+                        //   sizePerPage:25,
+                        //   totalSize: data.data.logs.length
+                        // })
+                        // }
                       />
-
                     </div>
                   )}
                 </ToolkitProvider>
@@ -473,7 +463,6 @@ const NewLogTable = () => {
                 nextClassName={"page-item"}
                 previousLinkClassName={"page-link"}
                 nextLinkClassName={"page-link"}
-
               />
             </>
           )}
@@ -488,16 +477,7 @@ const NewLogTable = () => {
           */}
       </Container>
 
-
-
-
-
       {/* </div> */}
-
-
-
-
-
     </>
   );
 };
