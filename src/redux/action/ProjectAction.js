@@ -27,7 +27,9 @@ import {
 
   GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST,
   GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_SUCCESS,
-  GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_FAIL
+  GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_FAIL,
+
+  UPLOAD_NEW_PROJECT_REQUEST_RESET
 } from "../types/ProjectConstants";
 
 export const getAllProject = () => async (dispatch) => {
@@ -188,6 +190,13 @@ export const uploadNewProject = (name, modelList, desc) => async (dispatch) => {
   }
 };
 
+export const clearProjectData = ()=> (dispatch)=>{
+    dispatch({
+      type: UPLOAD_NEW_PROJECT_REQUEST_RESET,
+      payload: {},
+    });
+}
+
 export const getLogTypeCounts = (code) => async (dispatch) => {
   try {
     dispatch({ type: GET_LOG_COUNT_REQUEST });
@@ -264,7 +273,7 @@ export const getLogByDate =
         console.log("hello else");
         var dt = new Date();
         const start = dt.toISOString().slice(0, 10);
-        dt.setDate(dt.getDate() - 30);
+        dt.setDate(dt.getDate() - 10);
         const end = dt.toISOString().slice(0, 10);
         response = await axios.get(
           `https://logger-server.herokuapp.com/api/logger/projects/datewiselogcount/${code}?startDate=${start}&endDate=${end}`,

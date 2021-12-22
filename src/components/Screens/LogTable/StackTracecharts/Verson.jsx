@@ -96,10 +96,10 @@ export default function VersonGraph(props) {
             <Dropdown.Item
             //   checked={filterDate === 10 ? true : false}
               onClick={(e) => {
-                filterOnDate({ diff: 10 })
+                filterOnDate({ diff: 30 })
               }}
             >
-              10
+              30 Days
             </Dropdown.Item>
             <Dropdown.Item
             //   checked={days === 45 ? true : false}
@@ -107,7 +107,7 @@ export default function VersonGraph(props) {
                 filterOnDate({ diff: 45 })
               }}
             >
-              45
+              45 Days
             </Dropdown.Item>
             <Dropdown.Item
             //   checked={days === 60 ? true : false}
@@ -115,15 +115,15 @@ export default function VersonGraph(props) {
                 filterOnDate({ diff: 60 })
               }}
             >
-              60
+              60 Days
             </Dropdown.Item>
             <Dropdown.Item
-            //   checked={days === 90 ? true : false}
+            //   checked={days === 60 ? true : false}
               onClick={(e) => {
                 filterOnDate({ diff: 90 })
               }}
             >
-              90
+              90 Days
             </Dropdown.Item>
           </DropdownButton>
         </Col>

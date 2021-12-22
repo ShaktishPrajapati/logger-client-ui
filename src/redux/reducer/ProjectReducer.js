@@ -26,7 +26,9 @@ import {
 
   GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST,
   GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_SUCCESS,
-  GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_FAIL
+  GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_FAIL,
+
+  UPLOAD_NEW_PROJECT_REQUEST_RESET
 } from "../types/ProjectConstants";
 
 export const getAllProjectReducer = (state = {}, action) => {
@@ -86,10 +88,16 @@ export const createNewProjectReducer = (state = {}, action) => {
         loading: false,
         error: action.payload,
       };
+    case UPLOAD_NEW_PROJECT_REQUEST_RESET:
+      return {
+        loading:false,
+        data:action.payload
+      }
     default:
       return state;
   }
 };
+
 
 export const getLogCountsReducer = (state = {}, action) => {
   switch (action.type) {

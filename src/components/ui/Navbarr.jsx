@@ -45,7 +45,7 @@ const Navbarr = (props) => {
       <IconContext.Provider value={{ color: "#1a83ff" }}>
         <div className="navbarr">
           <h2 className="titleNavbar" style={{ color: "#1a83ff" }}>
-            {props.navbardetails.dashName}
+            {props.navbardetails.dashName.charAt(0).toUpperCase()+props.navbardetails.dashName.slice(1)}
           </h2>
           <div
             onClick={(e) => {
@@ -88,7 +88,10 @@ const Navbarr = (props) => {
                       className="sidebar_avatar__letters"
                       style={{ textDecoration: "none" }}
                     >
-                      {props.navbardetails && props.navbardetails.name
+                      {
+                        console.warn(props)
+                      }
+                      {props && props.navbardetails && props.navbardetails.name
                         .split(" ")
                         .map((name) => name[0][0].toUpperCase())}
                     </div>
@@ -99,8 +102,8 @@ const Navbarr = (props) => {
 
                 {navToggle ? (
                   <>
-                    <p className="name-avatar"> {props.navbardetails.name} </p>
-                    <p className="name-email" style={{ display: "none" }}>saman@gmail.com</p>
+                    <p className="name-avatar"> {props.navbardetails.dashName.charAt(0).toUpperCase()+props.navbardetails.dashName.slice(1)} </p>
+                    {/* <p className="name-email" style={{ display: "none" }}>saman@gmail.com</p> */}
                   </>
                 ) : null}
               </Link>

@@ -169,14 +169,17 @@ function Analytics() {
 
                 >
                   {/* <Dropdown.Item onClick={()=>{setdate({start:Date.now, end:Date().setDate(Date.now - 3)})}}>3 Days</Dropdown.Item> */}
-                  <Dropdown.Item onClick={() => filterOnDate({ diff: 5 })}>
-                    5 Days
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => filterOnDate({ diff: 7 })}>
-                    Week
-                  </Dropdown.Item>
                   <Dropdown.Item onClick={() => filterOnDate({ diff: 30 })}>
-                    Month
+                    30 Days
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => filterOnDate({ diff: 45 })}>
+                    45 Days
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => filterOnDate({ diff: 60 })}>
+                    60 Days
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => filterOnDate({ diff: 90 })}>
+                    90 Days
                   </Dropdown.Item>
                 </DropdownButton>
               </Col>

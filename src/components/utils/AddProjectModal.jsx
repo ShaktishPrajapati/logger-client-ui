@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+// import { toast,Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 
 import "../../css/AddProjectModal.css";
@@ -58,6 +59,11 @@ const AddProjectModal = (props) => {
       setErrorMsg("Device type is required");
     }
 
+    // if (data) {
+    //   toast.success('Project Created Successfully')
+      
+    // }
+
     if (createProject.name.length && modelType.length) {
       setErrorName("");
       setErrorMsg("");
@@ -68,7 +74,7 @@ const AddProjectModal = (props) => {
           createProject.description
         )
       );
-      // props.closemodal()
+      props.closemodal()
     }
   };
   return (
@@ -93,6 +99,7 @@ const AddProjectModal = (props) => {
           <h6 style={{ fontSize: 12, color: "green" }}>
             Porject Created Successfully...
           </h6>
+          // <Toaster/>
         ) : (
           ""
         )}
