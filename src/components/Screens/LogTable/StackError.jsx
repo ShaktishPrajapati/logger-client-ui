@@ -22,7 +22,7 @@ export default function StackError() {
   console.log("completeStack", completeStack)
 
   useEffect(() => {
-    // dispatch(getLogMsgOccurenceWRTDate({ logMsg: completeStack }))
+    dispatch(getLogMsgOccurenceWRTDate({ logMsg: completeStack }))
   }, []);
 
   // let completeStackMultple = completeStack.split(":")
@@ -35,7 +35,7 @@ export default function StackError() {
 
   // const arraytoOBj = Object.assign({}, completeStackMultple);
   // console.log("arraytoOBj", [arraytoOBj]);
-  console.log("completeStackMultplenew", completeStackMultplenew);
+  console.log("completeStackMultplenew", completeStack);
 
   let history = useHistory();
   const [fullStack, setFullStack] = useState(true)
@@ -168,7 +168,7 @@ export default function StackError() {
         <div style={{ marginTop: "6%", width: "84%", float: "right" }}>
           <Row className="mt-5 d-flex align-center">
             {/* <Col xl={12} className='mb-4'><Button onClick={backButtontotable}><FontAwesomeIcon icon={faArrowLeft} /></Button></Col> */}
-            <Col xl={7} className={`${Style.versonGraph} m-2 p-4 d-flex align-items-center`}>   <VersonGraph logMsg={completeStack} code={code} /></Col>
+            <Col xl={7} className={`${Style.versonGraph} m-2 p-4 d-flex align-items-center`}><VersonGraph logMsg={completeStack} code={code} /></Col>
             <Col xl={4} className={`${Style.eventOuter} p-4`}>
               <Row>
                 <Col xl={5} onClick={deviceSelectOne} style={{ cursor: "pointer", padding: "5px", borderRadius: "8px", color: "#fff", display: "flex", justifyContent: "center" }} className={activeClass.eventDetails ? `${Style.activeStack}` : `${Style.InactiveStack}`} >Event Details</Col>

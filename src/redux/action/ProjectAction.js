@@ -30,6 +30,10 @@ import {
   GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_FAIL
 } from "../types/ProjectConstants";
 
+
+
+
+
 export const getAllProject = () => async (dispatch) => {
   try {
     dispatch({ type: GET_PROJECT_REQUEST });
@@ -419,7 +423,6 @@ export const getLogMsgOccurenceWRTDate = ({ code, startDate, endDate, logMsg }) 
       var dt = new Date();
       const end = dt.toISOString().slice(0, 10);
       dt.setDate(dt.getDate() - 30);
-
       const start = dt.toISOString().slice(0, 10);
       console.log("date", start, end)
 
@@ -435,7 +438,8 @@ export const getLogMsgOccurenceWRTDate = ({ code, startDate, endDate, logMsg }) 
         payload: data.data,
       });
 
-    } else {
+    }
+    else {
       const { data } = await axios.get(
         // `https://logger-server.herokuapp.com/api/logger/projects/log-occurrences-datewise/${code}?startDate=${startDate}&endDate=${endDate}&logMsg=${logMsg}`
         `https://logger-server.herokuapp.com/api/logger/projects/log-occurrences-datewise/${code}?startDate=${startDate}&endDate=${endDate}&logMsg=${logMsg}`
