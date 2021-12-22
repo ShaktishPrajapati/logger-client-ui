@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
 import { Link } from "react-router-dom";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import "../../css/Navbarr.css";
@@ -88,9 +86,10 @@ const Navbarr = (props) => {
                       className="sidebar_avatar__letters"
                       style={{ textDecoration: "none" }}
                     >
-                      {props.navbardetails && props.navbardetails.name
-                        .split(" ")
-                        .map((name) => name[0][0].toUpperCase())}
+                      {props.navbardetails &&
+                        props.navbardetails.name
+                          .split(" ")
+                          .map((name) => name[0][0].toUpperCase())}
                     </div>
                   </div>
                 </div>
@@ -100,7 +99,9 @@ const Navbarr = (props) => {
                 {navToggle ? (
                   <>
                     <p className="name-avatar"> {props.navbardetails.name} </p>
-                    <p className="name-email" style={{ display: "none" }}>saman@gmail.com</p>
+                    <p className="name-email" style={{ display: "none" }}>
+                      saman@gmail.com
+                    </p>
                   </>
                 ) : null}
               </Link>
@@ -111,14 +112,15 @@ const Navbarr = (props) => {
               <Link
                 to={
                   props.navbardetails.link1 &&
-                    props.navbardetails.link1.link &&
-                    props.navbardetails.link1.link.length == 0
+                  props.navbardetails.link1.link &&
+                  props.navbardetails.link1.link.length == 0
                     ? ""
                     : props.navbardetails.link1.link
                 }
                 className={
                   currentRoute.includes("home") ||
-                    currentRoute.includes("newlogtable") || currentRoute.includes("stack")
+                  currentRoute.includes("newlogtable") ||
+                  currentRoute.includes("stack")
                     ? "nav-text active"
                     : "nav-text "
                 }
@@ -145,8 +147,8 @@ const Navbarr = (props) => {
               <Link
                 to={
                   props.navbardetails.link2 &&
-                    props.navbardetails.link2.link &&
-                    props.navbardetails.link2.link.length === 0
+                  props.navbardetails.link2.link &&
+                  props.navbardetails.link2.link.length === 0
                     ? ""
                     : props.navbardetails.link2.link
                 }

@@ -52,7 +52,8 @@ const Home = () => {
     if (!localStorage.getItem("ddAdminToken")) {
       history.push("/");
     }
-    Dispatch(getAllProject());
+    Dispatch(
+      getAllProject());
   }, []);
 
   const closeModal = () => {

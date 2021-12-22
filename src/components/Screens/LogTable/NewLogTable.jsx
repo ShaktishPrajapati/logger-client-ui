@@ -33,6 +33,7 @@ import FilterButton from "./FilterButton";
 import { Link, Redirect } from "react-router-dom";
 import StackError from "./StackError";
 // import NewTable from './NewTable';
+import { useHistory } from "react-router-dom";
 
 const { SearchBar } = Search;
 const queryString = window.location.search;
@@ -69,13 +70,11 @@ const defaultSorted = [
   },
 ];
 
-
 var queryAllSting = { value1: "at", value2: "" };
 
 const StackOptions = () => {
-  localStorage.setItem("queryAllSting", JSON.stringify(queryAllSting))
-}
-
+  localStorage.setItem("queryAllSting", JSON.stringify(queryAllSting));
+};
 
 const columns = [
   {
@@ -95,7 +94,7 @@ const columns = [
     headerAlign: "center",
 
     formatter: (col, row) => {
-      // console.log("col id mil", row);
+      console.log("row id mil", row);
       const code = urlParams.get("code");
       return (
         <div style={{ width: "250px", height: "auto", overflow: "hidden" }}>
@@ -107,7 +106,7 @@ const columns = [
             {col}
           </ReactReadMoreReadLess>
           <Link
-            to={`/stackError?code=${code}&name=stackError&id=${row._id}&allStacks=${row.logMsg}&macAddress=${row.did}&loggenrateddate=${row.logGeneratedDate}&modeltype=${row.device_types}&logtype=${row.logType}&version=${row.updatedAt}`}
+            to={`/stackError?code=${code}&name=stackError&id=${row._id}&allStacks=${row.logMsg}&macAddress=${row.did}&loggenrateddate=${row.logGeneratedDate}&modeltype=${row.device_types}&logtype=${row.logType}&version=${row.updatedAt}&RowVersion=${row.version}`}
           >
             <Button style={{ float: "right" }} onClick={() => {}}>
               Stack
@@ -159,6 +158,7 @@ const columns = [
   },
 ];
 const NewLogTable = () => {
+  let history = useHistory();
   // const [date, setDate] = useState({
   //   start: localStorage.getItem("selected_date")
   //     ? JSON.parse(localStorage.getItem("selected_date")).start
@@ -193,12 +193,11 @@ const NewLogTable = () => {
   // const startDateRef = useRef(null);
   // const endDatRef = useRef(null);
 
-  // const queryString = window.location.search;
-  // const urlParams = new URLSearchParams(queryString);
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
   const code = urlParams.get("code");
   const projectName = urlParams.get("name");
   const dispatch = useDispatch();
-
 
   const getAllLogByCodeReducer = useSelector(
     (state) => state.getAllLogByCodeReducer
@@ -268,8 +267,8 @@ const NewLogTable = () => {
   };
 
   useEffect(() => {
-      dispatch(getProjectByCode(code))
-  }, [])
+    dispatch(getProjectByCode(code));
+  }, []);
 
   // console.log("page no" + pageNo);
 

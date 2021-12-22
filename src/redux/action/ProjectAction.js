@@ -422,7 +422,7 @@ export const getLogMsgOccurenceWRTDate = ({ code, startDate, endDate, logMsg }) 
     if (!startDate && !endDate) {
       var dt = new Date();
       const end = dt.toISOString().slice(0, 10);
-      dt.setDate(dt.getDate() - 30);
+      dt.setDate(dt.getDate() - 15);
       const start = dt.toISOString().slice(0, 10);
       console.log("date", start, end)
 
