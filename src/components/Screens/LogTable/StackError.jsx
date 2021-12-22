@@ -28,8 +28,9 @@ export default function StackError() {
   // let completeStackMultple = completeStack.split(":")
   let completeStackMultplenew = completeStack.match(pattern)
   let completeStackMultplenewArray = completeStack.split(" at")
+  console.log("completeStackMultplenewArray one", completeStackMultplenewArray)
 
-  console.log("completeStackMultplenewArray", completeStackMultplenewArray)
+  const completeStackMultplenewArrayNew = completeStackMultplenewArray[0];
 
 
 
@@ -63,6 +64,7 @@ export default function StackError() {
     devices: false,
   })
   const [activeClass, setActiveClass] = useState({ eventDetails: true, devices: false, })
+
 
 
   const [displayLowerInfo, setDisplayLowerInfo] = useState(false)
@@ -138,7 +140,8 @@ export default function StackError() {
     },
   };
 
-  const ShowInnerInfo = () => {
+  const ShowInnerInfo = (index) => {
+
     if (displayLowerInfo) {
       return setDisplayLowerInfo(false)
     }
@@ -147,6 +150,10 @@ export default function StackError() {
     }
     return setDisplayLowerInfo(false)
   }
+
+
+
+
 
   const ShowInnerInfoStackError = () => {
     if (displayLowerInfoStackError) {
@@ -168,7 +175,13 @@ export default function StackError() {
         <div style={{ marginTop: "6%", width: "84%", float: "right" }}>
           <Row className="mt-5 d-flex align-center">
             {/* <Col xl={12} className='mb-4'><Button onClick={backButtontotable}><FontAwesomeIcon icon={faArrowLeft} /></Button></Col> */}
-            <Col xl={7} className={`${Style.versonGraph} m-2 p-4 d-flex align-items-center`}><VersonGraph logMsg={completeStack} code={code} /></Col>
+            <Col xl={7} className={`${Style.versonGraph} m-2 p-4 d-flex align-items-center`}>
+              {completeStackMultplenewArrayNew ?
+                <VersonGraph logMsg={completeStackMultplenewArrayNew} code={code} />
+                : <VersonGraph logMsg={completeStack} code={code} />
+
+              }
+            </Col>
             <Col xl={4} className={`${Style.eventOuter} p-4`}>
               <Row>
                 <Col xl={5} onClick={deviceSelectOne} style={{ cursor: "pointer", padding: "5px", borderRadius: "8px", color: "#fff", display: "flex", justifyContent: "center" }} className={activeClass.eventDetails ? `${Style.activeStack}` : `${Style.InactiveStack}`} >Event Details</Col>
@@ -298,14 +311,13 @@ export default function StackError() {
 
 
                   </Col> :
-
                   completeStackMultplenewArray.map((itmes, index) => {
                     return (
                       <Col xl={12} className="mt-2" >
                         <div>
                           <div className={`${Style.stackErrorDiv}`} >
                             {console.log("itmes", index)}
-                            <p onClick={ShowInnerInfo}>
+                            <p onClick={() => ShowInnerInfo(index)}>
                               {index == 0 ? <span style={{ fontWeight: "bold" }}></span> : <span style={{ fontWeight: "bold" }}>at </span>}
                               {itmes}
                               <span style={{ float: "right", }}>
