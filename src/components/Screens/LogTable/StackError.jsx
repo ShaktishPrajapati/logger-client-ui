@@ -50,6 +50,8 @@ export default function StackError() {
   const urlParams = new URLSearchParams(queryString);
 
   const code = urlParams.get("code");
+  console.log("gettting code form table", code);
+
   const projectName = urlParams.get("name");
 
   const macAddress = urlParams.get("macAddress");
@@ -57,8 +59,6 @@ export default function StackError() {
   const modeltype = urlParams.get("modeltype");
   const logtype = urlParams.get("logtype");
   const version = urlParams.get("RowVersion");
-  
-
 
   console.log("logtype", logtype);
 

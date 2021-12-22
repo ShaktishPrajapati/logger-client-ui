@@ -26,6 +26,9 @@ import SpinLoader from "../../../utils/SpinLoader";
 export default function VersonGraph(props) {
   // console.log(props.logMsg);
   const code = props.code;
+
+  console.log("code version graph", code);
+
   const [filterDate, setFilterDate] = useState({
     start: null,
     end: null,

@@ -421,14 +421,14 @@ export const getLogMsgOccurenceWRTDate = ({ code, startDate, endDate, logMsg }) 
 
     if (!startDate && !endDate) {
       var dt = new Date();
-      const end = dt.toISOString().slice(0, 10);
-      dt.setDate(dt.getDate() - 15);
-      const start = dt.toISOString().slice(0, 10);
-      console.log("date", start, end)
+      const endDate = dt.toISOString().slice(0, 10);
+      dt.setDate(dt.getDate() - 10);
+      const startDate = dt.toISOString().slice(0, 10);
+      console.log("date", startDate, endDate, logMsg, code)
 
       const { data } = await axios.get(
         // `https://logger-server.herokuapp.com/api/logger/projects/log-occurrences-datewise/${code}?startDate=${startDate}&endDate=${endDate}&logMsg=${logMsg}`
-        `https://logger-server.herokuapp.com/api/logger/projects/log-occurrences-datewise/${code}?startDate=${start}&endDate=${end}&logMsg=${logMsg}`
+        `https://logger-server.herokuapp.com/api/logger/projects/log-occurrences-datewise/${code}?startDate=${startDate}&endDate=${endDate}&logMsg=${logMsg}`
         // MF7OW?startDate=2021-08-01&endDate=2021-12-31&logMsg=Debugging!&did=10:EC:81:1C:12:30
         ,
         config

@@ -96,6 +96,8 @@ const columns = [
     formatter: (col, row) => {
       // console.log("row id mil", row);
       const code = urlParams.get("code");
+      // console.log("now_code", code);
+
       return (
         <div style={{ width: "250px", height: "auto", overflow: "hidden" }}>
           <ReactReadMoreReadLess
