@@ -1,3 +1,5 @@
+
+
 import {
   GET_PROJECT_REQUEST,
   GET_PROJECT_REQUEST_SUCCESS,
@@ -22,7 +24,11 @@ import {
   GET_ERROR_COUNT_BY_VERSION_REQUEST_FAIL,
   GET_DEVICE_INFO_REQUEST,
   GET_DEVICE_INFO_REQUEST_SUCCESS,
-  GET_DEVICE_INFO_REQUEST_FAIL
+  GET_DEVICE_INFO_REQUEST_FAIL,
+
+  GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST,
+  GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_SUCCESS,
+  GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_FAIL
 } from "../types/ProjectConstants";
 
 export const getAllProjectReducer = (state = {}, action) => {
@@ -185,4 +191,24 @@ export const getDeviceInfoReducer = (state = {}, action) => {
     default:
       return state;
   }
+};
+
+export const getLogMsgOccurenceWRTDateReducer = (state={},action)=>{
+  switch (action.type) {
+    case   GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST:
+      return { loading: true };
+
+    case   GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_SUCCESS:
+      return {
+        loading: false,
+        data: action.payload,
+      };
+    case   GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+}
 };

@@ -88,7 +88,7 @@ const Navbarr = (props) => {
                       className="sidebar_avatar__letters"
                       style={{ textDecoration: "none" }}
                     >
-                      {props.navbardetails.name
+                      {props.navbardetails && props.navbardetails.name
                         .split(" ")
                         .map((name) => name[0][0].toUpperCase())}
                     </div>
