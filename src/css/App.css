@@ -16,7 +16,10 @@ ul {
 }
 
 
-.dropdown-item{
+.dropdown-item {
   text-decoration: none !important;
 }
 
+.fa-arrow-down {
+  color: rgb(99, 99, 99) !important;
+}
