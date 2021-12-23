@@ -402,7 +402,7 @@ export default function StackError() {
                         <Col xl={12} className="mt-2">
                           <div>
                             <div className={`${Style.stackErrorDiv}`}>
-                              {console.log("itmes", index)}
+                              {/* {console.log("itmes", index)} */}
                               <p onClick={() => ShowInnerInfo(index)}>
                                 {index == 0 ? (
                                   <span style={{ fontWeight: "bold" }}></span>

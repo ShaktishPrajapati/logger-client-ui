@@ -456,7 +456,7 @@ export const getLogMsgOccurenceWRTDate = ({ code, startDate, endDate, logMsg }) 
 
 
   } catch (error) {
-    console.log(error.response);
+    // console.log(error.response);
     dispatch({
       type: GET_LOG_MSG_OCCURENCE_COUNT_WRT_DATE_REQUEST_FAIL,
       payload:
