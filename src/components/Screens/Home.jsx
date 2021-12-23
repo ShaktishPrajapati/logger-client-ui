@@ -15,11 +15,12 @@ import { Button, Card, Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getAllProject } from "../../redux/action/ProjectAction";
+import { clearProjectData, getAllProject } from "../../redux/action/ProjectAction";
 import AddProjectModal from "../utils/AddProjectModal";
 import SpinLoader from "../utils/SpinLoader";
 import ProjectCard from "../utils/ProjectCard";
 import { useHistory } from "react-router";
+import { toast,Toaster } from "react-hot-toast";
 
 const Home = () => {
   const [modal, setModal] = useState(false);
@@ -31,6 +32,13 @@ const Home = () => {
 
   const adminLoginReducer = useSelector((state) => state.adminLoginReducer);
   const { adminInfo } = adminLoginReducer;
+
+  const createNewProjectReducer = useSelector((state) => state.createNewProjectReducer);
+  const { data } = createNewProjectReducer;
+  if (data && data.data) {
+    toast.success('Project Created Successfully');
+    Dispatch(clearProjectData())
+  }
 
   const navbardetail = {
     name: adminInfo.data.name,
@@ -67,6 +75,7 @@ const Home = () => {
         <SpinLoader />
       ) : (
         <Container>
+          <Toaster/>
           <Row style={{ marginLeft: "150px", marginTop: "120px" }}>
             {adminInfo.data && adminInfo.data.isSuperAdmin ? (
               <Col>

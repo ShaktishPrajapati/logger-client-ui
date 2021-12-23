@@ -108,10 +108,10 @@ const columns = [
             {col}
           </ReactReadMoreReadLess>
           <Link
-            to={`/stackError?code=${code}&name=stackError&id=${row._id}&allStacks=${row.logMsg}&macAddress=${row.did}&loggenrateddate=${row.logGeneratedDate}&modeltype=${row.device_types}&logtype=${row.logType}&version=${row.updatedAt}&RowVersion=${row.version}`}
+            to={`/stackError?code=${code}&name=Stack Trace&id=${row._id}&allStacks=${row.logMsg}&macAddress=${row.did}&loggenrateddate=${row.logGeneratedDate}&modeltype=${row.device_types}&logtype=${row.logType}&version=${row.updatedAt}`}
           >
             <Button style={{ float: "right" }} onClick={() => {}}>
-              Stack
+              View
             </Button>
           </Link>
         </div>
@@ -198,7 +198,9 @@ const NewLogTable = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const code = urlParams.get("code");
+  console.log(code);
   const projectName = urlParams.get("name");
+  console.log(projectName);
   const dispatch = useDispatch();
 
   const getAllLogByCodeReducer = useSelector(
@@ -264,15 +266,13 @@ const NewLogTable = () => {
     if (pageNo !== data.selected) {
       setPageNo(data.selected);
     }
-
     dispatch(getProjectByCode(code, null, null, pageNo, record));
   };
 
   useEffect(() => {
+    console.log("useEffect first " + code);
     dispatch(getProjectByCode(code));
   }, []);
-
-  // console.log("page no" + pageNo);
 
   const navbardetail = {
     name: projectName,

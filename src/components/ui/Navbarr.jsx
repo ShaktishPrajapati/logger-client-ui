@@ -43,7 +43,7 @@ const Navbarr = (props) => {
       <IconContext.Provider value={{ color: "#1a83ff" }}>
         <div className="navbarr">
           <h2 className="titleNavbar" style={{ color: "#1a83ff" }}>
-            {props.navbardetails.dashName}
+            {props.navbardetails.dashName.charAt(0).toUpperCase()+props.navbardetails.dashName.slice(1)}
           </h2>
           <div
             onClick={(e) => {

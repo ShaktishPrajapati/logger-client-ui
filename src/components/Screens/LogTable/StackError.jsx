@@ -93,10 +93,10 @@ export default function StackError() {
 
   // getting the query sting value which will be included in the table stack possibly
 
-  const qeuryStingObj = localStorage.getItem("queryAllSting");
-  const qeuryStingObjParse = JSON.parse(qeuryStingObj);
-  const { value1 } = qeuryStingObjParse;
-  console.log("qeuryStingObj", value1);
+  // const qeuryStingObj = localStorage.getItem("queryAllSting");
+  // const qeuryStingObjParse = JSON.parse(qeuryStingObj);
+  // const { value1 } = qeuryStingObjParse;
+  // console.log("qeuryStingObj", value1);
 
   const FullStack = () => {
     setFullStack(true);

@@ -64,17 +64,27 @@ function LineGraphs() {
     console.log("LineCount", LineCount)
     return (
         <ResponsiveContainer width={'100%'} height={370}>
-        <AreaChart data={LineCount}
-        // width={700} height={500}
-          margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
-          <XAxis dataKey="date" />
-          <YAxis />
-          <CartesianGrid strokeDasharray="3 3" />
-          <Tooltip />
-          {/* <ReferenceLine x="Page C" stroke="green" label="Min PAGE" /> */}
-          {/* <ReferenceLine y={4000} label="Max" stroke="red" strokeDasharray="3 3" /> */}
-          <Area type="monotone" dataKey="countLog" stroke="#3E8BE2" fill="#D3E5F9" />
-        </AreaChart>
+          {
+            LineCount && LineCount.length === 0 ?<p style={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }} >No data</p>:
+              <AreaChart data={LineCount}
+              // width={700} height={500}
+                margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+                <XAxis dataKey="date" />
+                <YAxis />
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip />
+                {/* <ReferenceLine x="Page C" stroke="green" label="Min PAGE" /> */}
+                {/* <ReferenceLine y={4000} label="Max" stroke="red" strokeDasharray="3 3" /> */}
+                <Area type="monotone" dataKey="countLog" stroke="#3E8BE2" fill="#D3E5F9" />
+              </AreaChart>
+              
+          }
       </ResponsiveContainer>
     )
 }
