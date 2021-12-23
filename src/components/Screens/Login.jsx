@@ -31,7 +31,7 @@ const Login = () => {
     if (!email) {
       setEmailError("Please enter your email Id");
 
-      console.log("email validate function " + emailError);
+      // console.log("email validate function " + emailError);
       return false;
     }
     // console.log("email validate function " + email)
@@ -41,7 +41,7 @@ const Login = () => {
         /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
       );
       if (!pattern.test(email)) {
-        console.log("patern test " + pattern.test(email));
+        // console.log("patern test " + pattern.test(email));
         setEmailError("Please enter valid email address.");
         return false;
       }
@@ -52,14 +52,14 @@ const Login = () => {
       email,
     });
 
-    console.log("LoginFormState", loginForm)
+    // console.log("LoginFormState", loginForm)
 
     setEmailError(null);
     return true;
   };
 
   const validatePassword = (password) => {
-    console.log("password validate");
+    // console.log("password validate");
     // setRegisterForm({
     //     backendErrorResponse:null
     // })
@@ -68,7 +68,7 @@ const Login = () => {
       setPasswordError("Please enter your password.");
       return false;
     }
-    console.log("password validate function " + passwordError);
+    // console.log("password validate function " + passwordError);
     if (password !== null) {
       var pattern = new RegExp(
         "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
@@ -119,7 +119,7 @@ const Login = () => {
         )
       );
     }
-    console.log("dispatch action working");
+    // console.log("dispatch action working");
   };
 
   // useEffect(() => {

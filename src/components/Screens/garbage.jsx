@@ -384,7 +384,7 @@
                       // const dataValidatin = () => {};
                     
                       const filterOnLogType = () => {
-                        console.log(logType);
+                        // console.log(logType);
                         // dispatch(getProjectByCode(code,null,logType))
                       };
                     
@@ -416,7 +416,7 @@
                       //     dispatch(getProjectByCode(code))
                       // }, [])
                     
-                      console.log("page no" + pageNo);
+                      // console.log("page no" + pageNo);
                     
                       const navbardetail = {
                         name: projectName,
@@ -434,7 +434,7 @@
                       };
                     
                       useEffect(() => {
-                        console.log("inside the logtype useEffect");
+                        // console.log("inside the logtype useEffect");
                         if (
                           logType.error ||
                           logType.info ||
@@ -552,9 +552,9 @@
                       // search Input data
                       const getAlldataFunction = async () => {
                     
-                        console.log("all data from store", data)
+                        // console.log("all data from store", data)
                         const logs = await data.data.logs;
-                        console.log("all logs from store", logs)
+                        // console.log("all logs from store", logs)
                     
                         setFilterData(
                           logs.filter(allData =>
@@ -1024,7 +1024,7 @@
                     
                                         */}
                     
-                                      {console.log("data", data.data.logs)}
+                                      {/* {console.log("data", data.data.logs)} */}
                                       <Container style={{ marginLeft: "173px" }}>
                     
                                         {/*xustome table -----------------------------*/}

@@ -28,7 +28,7 @@ const Navbarr = (props) => {
   };
 
   const currentRoute = useHistory().location.pathname.toLowerCase();
-  console.log("currentRoute", currentRoute);
+  // console.log("currentRoute", currentRoute);
 
   // navigation toogle
   const navToggleFun = () => {
@@ -107,7 +107,7 @@ const Navbarr = (props) => {
               </Link>
             </div>
 
-            {console.log(props.navbardetails.link1.iconName)}
+            {/* {console.log(props.navbardetails.link1.iconName)} */}
             <section>
               <Link
                 to={

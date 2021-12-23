@@ -5,7 +5,7 @@ import ReactPaginate from 'react-paginate'
 const CustomPagination = () => {
 
     const handlePageClick = (data)=>{
-        console.log(data.selected)
+        // console.log(data.selected)
     }
     return (
         <div>

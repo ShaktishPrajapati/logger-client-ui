@@ -21,7 +21,7 @@ const Protected = ({ Component, ...rest }) => {
     <Route {...rest} render={
       // props => <Component {...rest} {...props} />
       props => {
-        console.log(localStorage.getItem("ddAdminToken"))
+        // console.log(localStorage.getItem("ddAdminToken"))
         return localStorage.getItem("ddAdminToken") ? <Component {...props} /> : <Redirect path="/" />
       }
     } />

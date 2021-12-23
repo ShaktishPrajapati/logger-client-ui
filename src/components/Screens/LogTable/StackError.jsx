@@ -26,7 +26,7 @@ export default function StackError() {
   // console.log("search param", search.);
   const pattern = /(at).*/gm;
   const completeStack = new URLSearchParams(search).get("allStacks");
-  console.log("completeStack", completeStack);
+  // console.log("completeStack", completeStack);
 
   useEffect(() => {
     dispatch(getLogMsgOccurenceWRTDate({ logMsg: completeStack }));
@@ -35,13 +35,13 @@ export default function StackError() {
   // let completeStackMultple = completeStack.split(":")
   let completeStackMultplenew = completeStack.match(pattern);
   let completeStackMultplenewArray = completeStack.split(" at");
-  console.log("completeStackMultplenewArray one", completeStackMultplenewArray);
+  // console.log("completeStackMultplenewArray one", completeStackMultplenewArray);
 
   const completeStackMultplenewArrayNew = completeStackMultplenewArray[0];
 
   // const arraytoOBj = Object.assign({}, completeStackMultple);
   // console.log("arraytoOBj", [arraytoOBj]);
-  console.log("completeStackMultplenew", completeStack);
+  // console.log("completeStackMultplenew", completeStack);
 
   let history = useHistory();
   const [fullStack, setFullStack] = useState(true);
@@ -50,7 +50,7 @@ export default function StackError() {
   const urlParams = new URLSearchParams(queryString);
 
   const code = urlParams.get("code");
-  console.log("gettting code form table", code);
+  // console.log("gettting code form table", code);
 
   const projectName = urlParams.get("name");
 
@@ -66,14 +66,14 @@ export default function StackError() {
   let day = dt.split("-")[2];
   loggenrateddate = `${day}-${month}-${year}`;
 
-  console.log(
-    "queryString",
-    macAddress,
-    loggenrateddate,
-    modeltype,
-    logtype,
-    version
-  );
+  // console.log(
+  //   "queryString",
+  //   macAddress,
+  //   loggenrateddate,
+  //   modeltype,
+  //   logtype,
+  //   version
+  // );
 
   const [device, setDevice] = useState({
     eventDetails: true,

@@ -23,7 +23,7 @@ export default function VerboseNewChart() {
       setChartData(piCount.map((itmes) => itmes.count));
       setChartDataLabel(piCount.map((itmes) => itmes.logType));
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
     }
   };
 

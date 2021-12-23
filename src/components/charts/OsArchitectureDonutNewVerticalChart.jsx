@@ -47,8 +47,8 @@ export function OsArchitectureDonutNewVerticalChart() {
 
       setlabelData(piCount.map((items) => items._id));
 
-      console.log("piCount", piCount);
-      console.log("label data", labelData);
+      // console.log("piCount", piCount);
+      // console.log("label data", labelData);
     })();
   }, []);
 

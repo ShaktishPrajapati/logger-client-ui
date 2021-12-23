@@ -42,7 +42,7 @@ const SignUp = () => {
     if (!email) {
       setemailError("Please enter your email Id");
 
-      console.log("email validate function " + emailError);
+      // console.log("email validate function " + emailError);
       return false;
     }
     // console.log("email validate function " + email)
@@ -52,7 +52,7 @@ const SignUp = () => {
         /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
       );
       if (!pattern.test(email)) {
-        console.log("patern test " + pattern.test(email));
+        // console.log("patern test " + pattern.test(email));
         setemailError("Please enter valid email address.");
         return false;
       }
@@ -66,7 +66,7 @@ const SignUp = () => {
   };
 
   const validatePassword = (password) => {
-    console.log("password validate");
+    // console.log("password validate");
     // setRegisterForm({
     //     backendErrorResponse:null
     // })
@@ -75,7 +75,7 @@ const SignUp = () => {
       setpasswordError("Please enter your password.");
       return false;
     }
-    console.log("password validate function " + RegisterForm.passwordError);
+    // console.log("password validate function " + RegisterForm.passwordError);
     // if (password !== null) {
     //     var pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     //     if (!pattern.test(password)) {
@@ -137,12 +137,12 @@ const SignUp = () => {
         )
       );
     }
-    console.log("dispatch action working");
+    // console.log("dispatch action working");
     e.preventDefault();
 
-    console.log("handle submit clicked");
+    // console.log("handle submit clicked");
 
-    console.log(RegisterForm);
+    // console.log(RegisterForm);
   };
   return (
     <div className="Register-card justify-content-center">

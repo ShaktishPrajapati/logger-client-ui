@@ -17,10 +17,10 @@ export function OsArchitectureDonutNew() {
       const { data } = await getErrorWRTOSReducer;
       const piCount = data && data.typeWiseCount ? data.typeWiseCount : null;
 
-      console.log("piCount", piCount);
+      // console.log("piCount", piCount);
 
       const piCountData = await piCount.map((items) => items.count);
-      console.log("piCountData", piCountData);
+      // console.log("piCountData", piCountData);
 
       setChartDatApi(piCountData);
     })();

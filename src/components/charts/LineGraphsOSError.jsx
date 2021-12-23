@@ -20,7 +20,7 @@ export default function LineGraphOsError() {
     data && data.typeWiseCount
       ? data.typeWiseCount
       : null;
-  console.log("LineCount line graph", piCount)
+  // console.log("LineCount line graph", piCount)
 
   return (
     <BarChart

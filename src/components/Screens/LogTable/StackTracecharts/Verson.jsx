@@ -27,7 +27,7 @@ export default function VersonGraph(props) {
   // console.log(props.logMsg);
   const code = props.code;
 
-  console.log("code version graph", code);
+  // console.log("code version graph", code);
 
   const [filterDate, setFilterDate] = useState({
     start: null,
@@ -65,15 +65,14 @@ export default function VersonGraph(props) {
 
   return (
     <>
-      <Col>
-        <Row>
-          <Col xl={3} className="ml-2">
+      <Col style={{ height: "100%", width: "100%" }}>
+        <Row style={{ width: "100%" }}>
+          <Col xl={4}>
             <input
               style={{
                 border: "1px solid #3E8BE2",
                 borderRadius: "10px",
-                width: "100%",
-                marginLeft: "40px",
+                width: "120%",
               }}
               type="date"
               className="p-1"
@@ -83,12 +82,12 @@ export default function VersonGraph(props) {
               }
             />
           </Col>
-          <Col xl={3} className="ml-4">
+          <Col xl={4} className="ml-3">
             <input
               style={{
                 border: "1px solid #3E8BE2",
                 borderRadius: "10px",
-                width: "100%",
+                width: "120%",
               }}
               type="date"
               className="p-1"
@@ -98,7 +97,7 @@ export default function VersonGraph(props) {
               }
             />
           </Col>
-          <Col xl={3} className="ml-2">
+          <Col xl={3} className="ml-4">
             <DropdownButton id="dropdown-basic-button" title="Duration">
               <Dropdown.Item
                 //   checked={filterDate === 10 ? true : false}
@@ -139,14 +138,14 @@ export default function VersonGraph(props) {
           {data ? (
             data && data.response.length !== 0 ? (
               <>
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex", marginTop: "10px" }}>
                   <LineChart
-                    width={500}
+                    width={450}
                     height={200}
                     data={data && data.response}
                     margin={{
                       top: 10,
-                      right: 30,
+                      right: 20,
                       left: 0,
                       bottom: 0,
                     }}
@@ -169,10 +168,11 @@ export default function VersonGraph(props) {
               <div
                 style={{
                   width: "100%",
-                  height: "100%",
+                  height: "200px",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  fontSize: "1.2rem",
                 }}
               >
                 No Data
@@ -182,13 +182,17 @@ export default function VersonGraph(props) {
             <div
               style={{
                 width: "100%",
-                height: "80%",
+                height: "200px",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                fontSize: "1.2rem",
+                fontWeight: "bold",
+                color: "rgb(62, 139, 226)",
               }}
             >
-              <SpinLoader />
+              Loading...
+              {/* <SpinLoader /> */}
             </div>
           )}
         </Row>

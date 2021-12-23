@@ -31,12 +31,12 @@ const AddProjectModal = (props) => {
   };
 
   const addChips = (e) => {
-    console.log(e.key);
+    // console.log(e.key);
     if (["Enter", "Tab", ","].includes(e.key)) {
       e.preventDefault();
 
       let inputChips = chips.trim();
-      console.log(inputChips);
+      // console.log(inputChips);
       if (inputChips) {
         if (!modelType.includes(inputChips.toLowerCase())) {
           setModelType([...modelType, inputChips]);
@@ -44,7 +44,7 @@ const AddProjectModal = (props) => {
         setchips("");
       }
     }
-    console.log(modelType);
+    // console.log(modelType);
   };
   const dispatch = useDispatch();
 
@@ -173,7 +173,7 @@ const AddProjectModal = (props) => {
             >
               &times;
             </button>
-            {console.log(type)}
+            {/* console.log(type) */}
           </div>
         ))}
       </Modal.Body>
