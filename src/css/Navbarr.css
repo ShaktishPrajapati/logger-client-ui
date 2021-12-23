@@ -135,7 +135,7 @@ svg {
 
 .titleNavbar {
   margin-left: 5%;
-  width: 100%;
+  width: 100% !important;
   float: left !important;
 
 }
