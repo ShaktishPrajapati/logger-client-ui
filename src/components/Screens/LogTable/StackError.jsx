@@ -55,12 +55,16 @@ export default function StackError() {
   const projectName = urlParams.get("name");
 
   const macAddress = urlParams.get("macAddress");
-  const loggenrateddate = urlParams.get("loggenrateddate");
+  let loggenrateddate = urlParams.get("loggenrateddate");
   const modeltype = urlParams.get("modeltype");
   const logtype = urlParams.get("logtype");
   const version = urlParams.get("RowVersion");
 
-  console.log("logtype", logtype);
+  let dt = loggenrateddate.split("T")[0];
+  let year = dt.split("-")[0];
+  let month = dt.split("-")[1];
+  let day = dt.split("-")[2];
+  loggenrateddate = `${day}-${month}-${year}`;
 
   console.log(
     "queryString",
