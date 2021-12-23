@@ -144,6 +144,9 @@ svg {
   margin-right: 2%;
   margin-left: 72%;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -226,4 +229,3 @@ svg {
   color: rgb(255, 255, 255);
   pointer-events: none;
 }
-
